@@ -248,3 +248,12 @@
     bar.classList.toggle('on', scrollY > innerHeight * 0.9);
   }, {passive:true});
 </script>
+
+<script>
+(function(){var v=document.querySelector('video');if(!v)return;v.muted=true;v.defaultMuted=true;
+function go(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+go();document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
+function kick(){go();document.removeEventListener('touchstart',kick);document.removeEventListener('click',kick);}
+document.addEventListener('touchstart',kick,{passive:true});document.addEventListener('click',kick);
+})();
+</script>
