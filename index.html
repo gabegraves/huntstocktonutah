@@ -260,6 +260,8 @@ var hero=v.closest('.hero')||v.parentElement;
 if(v.poster&&hero){hero.style.backgroundImage='url("'+v.poster+'")';hero.style.backgroundSize='cover';hero.style.backgroundPosition='center';}
 v.muted=true;v.defaultMuted=true;
 v.addEventListener('playing',function(){v.classList.add('live');});
+v.addEventListener('pause',function(){v.classList.remove('live');setTimeout(go,300);});
+v.addEventListener('stalled',function(){setTimeout(go,1000);});
 function go(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
 go();
 v.addEventListener('loadeddata',go);
